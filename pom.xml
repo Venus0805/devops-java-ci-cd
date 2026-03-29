@@ -20,6 +20,18 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <target>17</target>
 </configuration>
 </plugin>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-jar-plugin</artifactId>
+<version>3.2.2</version>
+<configuration>
+<archive>
+<manifest>
+<mainClass>com.example.App</mainClass>
+</manifest>
+</archive>
+</configuration>
+</plugin>
 </plugins>
 </build>
 
