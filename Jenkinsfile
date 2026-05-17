@@ -25,5 +25,10 @@ pipeline {
                 sh 'docker push venus0805/devops-java-app:latest'
             }
         }
+	stage('Deploy Kubernetes') {
+            steps {
+                sh 'kubectl rollout restart deployment devops-java-app'
+            }
+        }
     }
 }
