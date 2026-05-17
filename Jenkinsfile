@@ -4,6 +4,11 @@ pipeline {
     stages {
 
         stage('Build Java App') {
+            agent {
+                docker {
+                    image 'maven:3.9.9-eclipse-temurin-17'
+                }
+            }
             steps {
                 sh 'mvn clean package'
             }
@@ -18,13 +23,6 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 sh 'docker push venus0805/devops-java-app:latest'
-            }
-        }
-
-        stage('Deploy to Kubernetes') {
-            steps {
-                sh 'kubectl apply -f deployment.yaml'
-                sh 'kubectl apply -f service.yaml'
             }
         }
     }
