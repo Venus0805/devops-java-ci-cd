@@ -26,9 +26,12 @@ pipeline {
             }
         }
 	stage('Deploy Kubernetes') {
-            steps {
-                sh 'kubectl rollout restart deployment devops-java-app'
-            }
-        }
+           steps {
+               sh '''
+                  export KUBECONFIG=/var/jenkins_home/.kube/config
+                  kubectl rollout restart deployment devops-java-app
+                  '''
+    }
+}
     }
 }
